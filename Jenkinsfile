@@ -75,7 +75,7 @@ pipeline {
                 }    
                 stage('5.2-UI Básicas') {
                     steps {
-                        echo "Pruebas selenium en $params.NAVEGADOR_PRUEBAS_BASICAS - $NAVEGADOR_PRUEBAS_BASICAS y en ultima versión... 30 minutos"
+                        echo "$params.PROBAR_HA - Pruebas selenium en $params.NAVEGADOR_PRUEBAS_BASICAS  y en ultima versión... 30 minutos"
                     }
                 }
             }
@@ -96,7 +96,7 @@ pipeline {
                     }
                     when {
                         expression {
-                            return params.PROBAR_HA == 'true';
+                            return params.PROBAR_HA;
                         }
                     }
                 }    
@@ -158,7 +158,7 @@ pipeline {
         }
         // Aqui estamos en el limite de lo que es Entrega continua
         stage('7-Guardo el artefacto') {
-            step {
+            steps {
                 echo 'En un repo de artefactos: NEXUS, ARTIFACTORY, REGISTRY DE IMAGENES DE DOCKER'
             }
         }
@@ -173,4 +173,4 @@ pipeline {
 
 }
 
-// Scripted: Es más potente, más flexible.... menos cómoda. LA BUENA !!
+// Scripted: Es más potente, más flexible.... menos cómoda. LA 
